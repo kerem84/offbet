@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useAuth } from "@/components/providers";
 import { CoinCounter } from "@/components/ui/coin-counter";
 import { PixelButton } from "@/components/ui/pixel-button";
+import { NotificationBell } from "@/features/notifications/components/notification-toast";
 
 export function Navbar() {
   const { profile } = useAuth();
@@ -29,6 +30,7 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         {profile && (
           <>
+            <NotificationBell />
             <CoinCounter amount={profile.points} size="sm" />
 
             <Link

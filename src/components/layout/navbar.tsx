@@ -2,15 +2,23 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useAuth } from "@/components/providers";
 import { CoinCounter } from "@/components/ui/coin-counter";
 import { PixelButton } from "@/components/ui/pixel-button";
 import { NotificationBell } from "@/features/notifications/components/notification-toast";
+import { sounds } from "@/lib/sounds";
 
 export function Navbar() {
   const { profile } = useAuth();
   const router = useRouter();
+  const [soundOn, setSoundOn] = useState(true);
+
+  function handleSoundToggle() {
+    const next = sounds.toggle();
+    setSoundOn(next);
+  }
 
   async function handleLogout() {
     const supabase = createClient();
@@ -48,6 +56,10 @@ export function Navbar() {
                 ADMIN
               </Link>
             )}
+
+            <PixelButton variant="ghost" size="sm" onClick={handleSoundToggle}>
+              {soundOn ? "🔊" : "🔇"}
+            </PixelButton>
 
             <PixelButton variant="ghost" size="sm" onClick={handleLogout}>
               CIKIS

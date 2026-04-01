@@ -7,6 +7,8 @@ import { CoinCounter } from "@/components/ui/coin-counter";
 import { WagerForm } from "./wager-form";
 import { calculateOdds } from "../utils";
 import { useAuth } from "@/components/providers";
+import { ReactionBar } from "@/features/reactions/components/reaction-bar";
+import { CommentList } from "@/features/reactions/components/comment-list";
 import type { Bet } from "../types";
 
 interface BetDetailProps {
@@ -27,6 +29,7 @@ function BetDetail({ bet }: BetDetailProps) {
       : null;
 
   return (
+    <div className="flex flex-col gap-4">
     <PixelCard glowColor="#a855f7" className="space-y-5">
       {/* Category + status indicator */}
       <div className="flex items-center justify-between">
@@ -92,6 +95,17 @@ function BetDetail({ bet }: BetDetailProps) {
         </div>
       )}
     </PixelCard>
+
+    {/* Reactions */}
+    <PixelCard glowColor="#facc15">
+      <ReactionBar betId={bet.id} />
+    </PixelCard>
+
+    {/* Comments */}
+    <PixelCard glowColor="#a855f7">
+      <CommentList betId={bet.id} />
+    </PixelCard>
+    </div>
   );
 }
 

@@ -81,12 +81,17 @@ body {
   color: var(--color-arcade-text);
 }
 
-/* ── CRT Scanline Overlay ── */
+/* ── CRT Scanline Overlay (applied via ::before so children stay interactive) ── */
 .crt-overlay {
-  position: fixed;
+  position: relative;
+}
+
+.crt-overlay::before {
+  content: "";
+  position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 1;
   background: repeating-linear-gradient(
     0deg,
     transparent,
@@ -94,15 +99,19 @@ body {
     rgba(0, 0, 0, 0.08) 2px,
     rgba(0, 0, 0, 0.08) 4px
   );
+  border-radius: inherit;
 }
 
 .crt-overlay::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  z-index: 1;
   background: radial-gradient(
     ellipse at center,
     transparent 60%,
     rgba(0, 0, 0, 0.4) 100%
   );
+  border-radius: inherit;
 }

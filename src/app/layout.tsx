@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className={`${inter.variable} ${pressStart2P.variable} antialiased`}>
-        <div className="crt-overlay" aria-hidden="true" />
         <Providers>{children}</Providers>
       </body>
     </html>

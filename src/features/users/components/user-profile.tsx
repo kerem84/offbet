@@ -4,6 +4,7 @@ import { PixelCard } from "@/components/ui/pixel-card";
 import { CoinCounter } from "@/components/ui/coin-counter";
 import { useAuth } from "@/components/providers";
 import { AvatarPicker } from "./avatar-picker";
+import { BadgeCollection } from "@/features/badges/components/badge-collection";
 import type { Profile } from "../types";
 
 interface UserProfileProps {
@@ -71,6 +72,8 @@ export function UserProfile({ profile, onUpdateAvatar }: UserProfileProps) {
           />
         </PixelCard>
       )}
+
+      <BadgeCollection userId={profile.id} />
     </div>
   );
 }

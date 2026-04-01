@@ -27,7 +27,7 @@ export function useBets(status: BetStatus = "active") {
     const supabase = createClient();
 
     const betsChannel = supabase
-      .channel("bets-changes")
+      .channel(`bets-${status}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "bets" },

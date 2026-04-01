@@ -15,7 +15,7 @@ function ProposeBetForm() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0].value);
+  const [category, setCategory] = useState<string>(CATEGORIES[0].value);
   const [deadline, setDeadline] = useState("");
   const [resolveDate, setResolveDate] = useState("");
   const [minWager, setMinWager] = useState(10);

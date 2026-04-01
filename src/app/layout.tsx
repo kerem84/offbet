@@ -17,6 +17,10 @@ const pressStart2P = Press_Start_2P({
 export const metadata: Metadata = {
   title: "OffBet — Ofis Bahis Salonu",
   description: "The retro arcade office betting platform",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

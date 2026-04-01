@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
@@ -30,9 +31,16 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 h-14 bg-arcade-card border-b-2 border-arcade-border flex items-center justify-between px-4">
       <Link
         href="/feed"
-        className="font-pixel text-lg text-arcade-yellow tracking-widest hover:opacity-80 transition-opacity"
+        className="hover:opacity-80 transition-opacity"
       >
-        OFFBET
+        <Image
+          src="/logo.png"
+          alt="OffBet"
+          width={120}
+          height={30}
+          className="h-7 w-auto"
+          priority
+        />
       </Link>
 
       <div className="flex items-center gap-4">

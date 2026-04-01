@@ -22,13 +22,13 @@ export function Sidebar() {
               key={href}
               href={href}
               className={[
-                "flex items-center gap-3 px-4 py-3 font-pixel text-[10px] tracking-wide transition-colors",
+                "flex items-center gap-3 px-4 py-3 font-pixel text-xs tracking-wide transition-colors",
                 isActive
                   ? "text-arcade-yellow border-l-2 border-arcade-yellow bg-arcade-yellow/5"
                   : "text-arcade-muted hover:text-arcade-text border-l-2 border-transparent",
               ].join(" ")}
             >
-              <span className="text-base leading-none">{icon}</span>
+              <span className="text-lg leading-none">{icon}</span>
               {label}
             </Link>
           );

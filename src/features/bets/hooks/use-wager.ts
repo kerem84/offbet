@@ -3,6 +3,7 @@
 import { useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useAuth } from "@/components/providers";
+import { sounds } from "@/lib/sounds";
 
 export function useWager() {
   const { profile, refreshProfile } = useAuth();
@@ -37,6 +38,7 @@ export function useWager() {
       if (pointsError) return false;
 
       await refreshProfile();
+      sounds.play("coin");
       return true;
     },
     [profile, refreshProfile]

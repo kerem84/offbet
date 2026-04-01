@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/components/providers";
 import { REACTION_EMOJIS } from "@/lib/constants";
+import { sounds } from "@/lib/sounds";
 import { useReactions } from "../hooks/use-reactions";
 
 interface ReactionBarProps {
@@ -23,6 +24,7 @@ export function ReactionBar({ betId }: ReactionBarProps) {
 
   function handleClick(emoji: string) {
     if (!profile) return;
+    sounds.play("blip");
     toggleReaction(emoji, profile.id);
   }
 

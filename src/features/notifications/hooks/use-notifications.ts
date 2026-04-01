@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useAuth } from "@/components/providers";
+import { sounds } from "@/lib/sounds";
 import type { Notification } from "../types";
 
 export function useNotifications() {
@@ -80,6 +81,14 @@ export function useNotifications() {
           setNotifications((prev) => [newNotif, ...prev].slice(0, 20));
           if (!newNotif.read) {
             setUnreadCount((prev) => prev + 1);
+            // Play sound based on notification type
+            if (newNotif.title === "KAZANDIN!") {
+              sounds.play("win");
+            } else if (newNotif.title === "KAYBETTIN!") {
+              sounds.play("lose");
+            } else {
+              sounds.play("blip");
+            }
           }
         }
       )

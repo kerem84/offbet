@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, ButtonHTMLAttributes } from "react";
+import { sounds } from "@/lib/sounds";
 
 type Variant = "primary" | "danger" | "ghost" | "yes" | "no";
 type Size = "sm" | "md" | "lg";
@@ -25,10 +26,16 @@ const sizeClasses: Record<Size, string> = {
 };
 
 const PixelButton = forwardRef<HTMLButtonElement, PixelButtonProps>(
-  ({ variant = "primary", size = "md", className = "", children, ...props }, ref) => {
+  ({ variant = "primary", size = "md", className = "", children, onClick, ...props }, ref) => {
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+      sounds.play("blip");
+      onClick?.(e);
+    }
+
     return (
       <button
         ref={ref}
+        onClick={handleClick}
         className={[
           "font-pixel border-2 transition-all",
           "hover:animate-shake active:animate-press-down",

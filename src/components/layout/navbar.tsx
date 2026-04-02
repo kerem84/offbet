@@ -10,6 +10,7 @@ import { CoinCounter } from "@/components/ui/coin-counter";
 import { PixelButton } from "@/components/ui/pixel-button";
 import { NotificationBell } from "@/features/notifications/components/notification-toast";
 import { sounds } from "@/lib/sounds";
+import { UserAvatar } from "@/components/ui/user-avatar";
 
 export function Navbar() {
   const { profile } = useAuth();
@@ -51,9 +52,16 @@ export function Navbar() {
 
             <Link
               href={`/profile/${profile.id}`}
-              className="font-pixel text-[10px] text-arcade-text hover:text-arcade-yellow transition-colors"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              {profile.username}
+              <UserAvatar
+                avatarUrl={profile.avatar_url}
+                username={profile.username}
+                size="sm"
+              />
+              <span className="font-pixel text-[10px] text-arcade-text">
+                {profile.username}
+              </span>
             </Link>
 
             {profile.role === "admin" && (

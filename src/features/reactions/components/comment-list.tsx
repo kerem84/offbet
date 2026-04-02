@@ -6,6 +6,7 @@ import { tr } from "date-fns/locale";
 import { useAuth } from "@/components/providers";
 import { PixelButton } from "@/components/ui/pixel-button";
 import { useComments } from "../hooks/use-comments";
+import { UserAvatar } from "@/components/ui/user-avatar";
 
 interface CommentListProps {
   betId: string;
@@ -45,6 +46,11 @@ export function CommentList({ betId }: CommentListProps) {
           <div key={comment.id} className="flex flex-col gap-1">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
+                <UserAvatar
+                  avatarUrl={comment.user.avatar_url}
+                  username={comment.user.username}
+                  size="sm"
+                />
                 <span className="font-pixel text-[10px] text-arcade-purple">
                   {comment.user.username}
                 </span>

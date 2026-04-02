@@ -6,6 +6,7 @@ import { useAuth } from "@/components/providers";
 import { AvatarPicker } from "./avatar-picker";
 import { BadgeCollection } from "@/features/badges/components/badge-collection";
 import type { Profile } from "../types";
+import { UserAvatar } from "@/components/ui/user-avatar";
 
 interface UserProfileProps {
   profile: Profile;
@@ -23,12 +24,11 @@ export function UserProfile({ profile, onUpdateAvatar }: UserProfileProps) {
     <div className="space-y-4">
       <PixelCard>
         <div className="flex items-center gap-4">
-          {/* Avatar placeholder */}
-          <div className="w-20 h-20 bg-arcade-border border-2 border-arcade-muted flex items-center justify-center shrink-0">
-            <span className="font-pixel text-xl text-arcade-yellow">
-              {profile.username.charAt(0).toUpperCase()}
-            </span>
-          </div>
+          <UserAvatar
+            avatarUrl={profile.avatar_url}
+            username={profile.username}
+            size="lg"
+          />
 
           <div className="space-y-1.5">
             <p className="font-pixel text-sm text-arcade-text">{profile.username}</p>

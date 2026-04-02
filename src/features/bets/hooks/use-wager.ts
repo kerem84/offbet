@@ -37,6 +37,12 @@ export function useWager() {
 
       if (pointsError) return false;
 
+      // Check High Roller badge
+      await supabase.rpc("check_high_roller", {
+        p_user_id: profile.id,
+        p_amount: amount,
+      });
+
       await refreshProfile();
       sounds.play("coin");
       return true;

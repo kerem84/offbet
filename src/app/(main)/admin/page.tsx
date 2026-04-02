@@ -71,6 +71,18 @@ export default function AdminPage() {
     setResolving(betId);
     const supabase = createClient();
     await supabase.from("bets").update({ status: "active" }).eq("id", betId);
+
+    // Check Troll badge for the bet creator
+    const { data: bet } = await supabase
+      .from("bets")
+      .select("creator_id")
+      .eq("id", betId)
+      .single();
+
+    if (bet?.creator_id) {
+      await supabase.rpc("check_and_award_badges", { p_user_id: bet.creator_id });
+    }
+
     await refetchPending();
     setResolving(null);
   }

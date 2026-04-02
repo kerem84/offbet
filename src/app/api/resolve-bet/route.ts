@@ -111,7 +111,8 @@ export async function POST(req: NextRequest) {
   // Check and award badges for all affected users
   const userIds = [...new Set(wagers.map((w) => w.user_id))];
   for (const uid of userIds) {
-    await supabase.rpc("check_and_award_badges", { p_user_id: uid });
+    const { error: badgeError } = await supabase.rpc("check_and_award_badges", { p_user_id: uid });
+    if (badgeError) console.error("Badge check failed:", badgeError);
   }
 
   return NextResponse.json({ success: true });

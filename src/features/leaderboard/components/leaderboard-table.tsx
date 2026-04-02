@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CoinCounter } from "@/components/ui/coin-counter";
+import { UserAvatar } from "@/components/ui/user-avatar";
 import type { LeaderboardEntry } from "../types";
 
 interface LeaderboardTableProps {
@@ -51,9 +52,16 @@ function LeaderboardTable({ entries }: LeaderboardTableProps) {
           </span>
 
           {/* Username */}
-          <span className="font-pixel text-xs text-arcade-text truncate pr-2">
-            {entry.username}
-          </span>
+          <div className="flex items-center gap-2 min-w-0">
+            <UserAvatar
+              avatarUrl={entry.avatar_url}
+              username={entry.username}
+              size="sm"
+            />
+            <span className="font-pixel text-xs text-arcade-text truncate">
+              {entry.username}
+            </span>
+          </div>
 
           {/* Points */}
           <div>

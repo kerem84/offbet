@@ -7,6 +7,7 @@ const navItems = [
   { href: "/feed", label: "BAHISLER", icon: "🎰" },
   { href: "/propose", label: "ONER", icon: "🎲" },
   { href: "/leaderboard", label: "SKOR", icon: "🏆" },
+  { href: "/about", label: "HAKKINDA", icon: "📜" },
 ];
 
 export function Sidebar() {
